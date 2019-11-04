@@ -119,13 +119,13 @@ Sau bước 2.4, lúc này bạn có thể truy cập giao diện web của Jenk
 Điền password đã lưu từ terminal vào khung trống
 
 <center>
-    <img src="assets/img/F301_4_3.png" width=600>
+    <img src="assets/img/F301_4_3.png" width=800>
 </center>
 
 Ở bước tiếp theo: chọn **`Install suggested plugins`**. Ứng dụng sẽ được cài đặt, bạn đồng thời sẽ nhìn thấy các dòng logs tại terminal trong máy ảo nơi bạn đã gõ lệnh chạy *Jenkins* với *docker*. Đồng thời logs và quá trình cài đặt cũng hiện ra trên giao diện web.
 
 <center>
-    <img src="assets/img/F301_4_4.png" width=600>
+    <img src="assets/img/F301_4_4.png" width=800>
 </center>
 
 ### 2.6 Khai báo quản trị viên
@@ -133,7 +133,7 @@ Sau bước 2.4, lúc này bạn có thể truy cập giao diện web của Jenk
 Sau bước 2.5, Jenkins sẽ đưa bạn đến trang dành cho khai báo quản trị viên. Chẳng hạn, ta khai báo quản trị viên `admin`.
 
 <center>
-    <img src="assets/img/F301_4_5.png" width=400>
+    <img src="assets/img/F301_4_5.png" width=800>
 </center>
 
 Nháy vào `Save and Continue`. Trang ***Instance Configuration*** mở ra với URL của Jenkins được định sẵn là *`http://localhost:30880/`*. Đến đây việc cài đặt *Jenkins* hoàn tất. Bạn có giao diện như sau:
@@ -141,6 +141,35 @@ Nháy vào `Save and Continue`. Trang ***Instance Configuration*** mở ra với
 <center>
     <img src="assets/img/F301_4_6.png" width=800>
 </center>
+
+### 2.7 Tắt, bật Jenkins
+
+Khi tắt *Jenkins* với `Ctrl + C` trong terminal, container bị phá hủy. Ta có thể bật lại Jenkins bằng `docker start`.
+
+``` sh
+# Tìm id của container
+anybody@anywhere:~/workspace/jenkins-docker master 127 ± docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                            PORTS               NAMES
+1fbcd6c56f3b        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   14 minutes ago      Exited (130) About a minute ago                       practical_mayer
+
+# Bật lại container
+anybody@anywhere:~/workspace/jenkins-docker master ± docker start 1fbcd6c56f3b
+1fbcd6c56f3b
+```
+
+Nếu muốn tắt container lần nữa:
+
+``` sh
+anybody@anywhere:~/workspace/jenkins-docker master ± docker stop 1fbcd6c56f3b
+```
+
+Nếu muốn xóa container
+
+``` sh
+anybody@anywhere:~/workspace/jenkins-docker master ± docker rm 1fbcd6c56f3b
+```
+
+Tuy nhiên, nếu xóa container, toàn bộ dữ liệu làm việc như các *công việc* (*job*), *cấu hình* (*configuration*) cũng mất. Phần tiếp theo cho biết cách *dựng* (*mount*) dữ liệu vào máy ảo để giữ được dữ liệu ngay khi container đã bị xóa.
 
 ## 3. Ví dụ 1: Sử dụng Jenkins như một *mẫu* (*form*) để thực hiện một công việc
 
