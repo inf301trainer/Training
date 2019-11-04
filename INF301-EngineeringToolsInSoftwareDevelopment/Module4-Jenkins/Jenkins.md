@@ -87,15 +87,15 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 *************************************************************
 *************************************************************
 
-2019-11-04 16:40:16.615+0000 [id=46]	INFO	hudson.model.UpdateSite#updateData: Obtained the latest update center data file for UpdateSource default
-2019-11-04 16:40:17.292+0000 [id=30]	INFO	hudson.model.UpdateSite#updateData: Obtained the latest update center data file for UpdateSource default
-2019-11-04 16:40:17.694+0000 [id=30]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
+2019-11-04 16:40:16.615+0000 [id=46] INFO    hudson.model.UpdateSite#updateData: Obtained the latest update center data file for UpdateSource default
+2019-11-04 16:40:17.292+0000 [id=30]    INFO    hudson.model.UpdateSite#updateData: Obtained the latest update center data file for UpdateSource default
+2019-11-04 16:40:17.694+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
 
 # Đây là dòng cho thấy Jenkins đã được cài đặt thành công
-2019-11-04 16:40:17.720+0000 [id=20]	INFO	hudson.WebAppMain$3#run: Jenkins is fully up and running
-2019-11-04 16:40:18.157+0000 [id=46]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
-2019-11-04 16:40:18.158+0000 [id=46]	INFO	hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
-2019-11-04 16:40:18.161+0000 [id=46]	INFO	hudson.model.AsyncPeriodicWork$1#run: Finished Download metadata. 8,706 ms
+2019-11-04 16:40:17.720+0000 [id=20]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+2019-11-04 16:40:18.157+0000 [id=46]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+2019-11-04 16:40:18.158+0000 [id=46]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+2019-11-04 16:40:18.161+0000 [id=46]    INFO    hudson.model.AsyncPeriodicWork$1#run: Finished Download metadata. 8,706 ms
 ```
 
 ### 2.4 Sử dụng cài đặt Virtual Box chuyển tiếp (*forward*) cổng máy ảo sang máy chính
@@ -169,7 +169,34 @@ Nếu muốn xóa container
 anybody@anywhere:~/workspace/jenkins-docker master ± docker rm 1fbcd6c56f3b
 ```
 
-Tuy nhiên, nếu xóa container, toàn bộ dữ liệu làm việc như các *công việc* (*job*), *cấu hình* (*configuration*) cũng mất. Phần tiếp theo cho biết cách *dựng* (*mount*) dữ liệu vào máy ảo để giữ được dữ liệu ngay khi container đã bị xóa.
+Tuy nhiên, nếu xóa container, toàn bộ dữ liệu làm việc như các *công việc* (*job*), *cấu hình* (*configuration*) cũng mất. Phần tiếp theo cho biết cách *dựng* (*mount*) một *thể tích* (*volume*) chứa dữ liệu trong máy ảo để giữ được dữ liệu ngay khi container đã bị xóa.
+
+### 2.8 Bật Jenkins và dựng dữ liệu
+
+Mọi dữ liệu (*công việc*, *cấu hình*) của Jenkins được lưu tại `/var/jenkins_home` trong container. Để dựng *thể tích* (*volume*) chứa dữ liệu `jenkins_home` trong máy ảo đồng bộ với `/var/jenkins_home` trong container, ta dùng lệnh sau:
+
+``` sh
+anybody@anywhere:~/workspace/jenkins-docker master ± docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/  jenkins/jenkins:lts
+Running from: /usr/share/jenkins/jenkins.war
+webroot: EnvVars.masterEnvVars.get("JENKINS_HOME")
+...
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+1917fc7092de49328326056b71155ad8
+
+...
+2019-11-04 17:35:27.694+0000 [id=20]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+```
+
+Để kiểm tra volume
+
+``` sh
+anybody@anywhere:~/workspace/jenkins-docker master ± docker volume ls
+DRIVER              VOLUME NAME
+...
+local               jenkins_home
+```
 
 ## 3. Ví dụ 1: Sử dụng Jenkins như một *mẫu* (*form*) để thực hiện một công việc
 
@@ -178,3 +205,8 @@ Tuy nhiên, nếu xóa container, toàn bộ dữ liệu làm việc như các *
 ## 5. Ví dụ 3: Trộn tự động với Jenkins
 
 ## 6. Ví dụ 4: Giao hàng tự động với Jenkins
+
+## Nguồn tư liệu
+
+1. [github.com/jenkinsci/docker](https://github.com/jenkinsci/docker)
+2. [jenkins.io](https://jenkins.io)
