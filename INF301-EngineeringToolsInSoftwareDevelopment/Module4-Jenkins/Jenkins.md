@@ -198,7 +198,70 @@ DRIVER              VOLUME NAME
 local               jenkins_home
 ```
 
-## 3. Ví dụ 1: Sử dụng Jenkins như một *mẫu* (*form*) để thực hiện một công việc
+## 3. Các ví dụ:
+
+### 3.1 Sử dụng Jenkins như một *mẫu* (*form*) để thực hiện một công việc
+
+#### 3.1.1 Kịch bản
+
+Bạn muốn tìm thông tin về tọa độ của một địa chỉ. Việc tìm thông tin được thực hiện thông qua API
+
+``` txt
+https://api-adresse.data.gouv.fr/search/
+```
+
+Chẳng hạn, ta gửi yêu cầu trực tiếp từ terminal
+
+``` bash
+anybody@anywhere:~ $ curl "https://api-adresse.data.gouv.fr/search/?q=14+avenue+de+la+Rostagne"
+{"type": "FeatureCollection", "version": "draft", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [7.118747, 43.571669]}, "properties": {"label": "14 Avenue de la Rostagne 06160 Antibes", "score": 0.8812350699438987, "housenumber": "14", "id": "06004_3020_00014", "type": "housenumber", "name": "14 Avenue de la Rostagne", "postcode": "06160", "citycode": "06004", "x": 1032680.91, "y": 6283412.48, "city": "Antibes", "context": "06, Alpes-Maritimes, Provence-Alpes-C\u00f4te d'Azur", "importance": 0.6935857693828857, "street": "Avenue de la Rostagne"}}], "attribution": "BAN", "licence": "ODbL 1.0", "query": "14 avenue de la Rostagne", "limit": 5}
+```
+
+Thay vì thiết kế một mẫu trên web để thực hiện hoặc dùng `curl` trực tiếp từ console, ta có thể dùng Jenkins
+
+#### 3.1.2 Viết job
+
+Nếu Jenkins đang tắt, mở lại bằng
+
+``` bash
+docker start 1fbcd6c56f3b
+```
+
+(`1fbcd6c56f3b` là id của container). Đăng nhập bằng tài khoản quản trị viên đã thiết lập trước đó nếu cần.
+
+Thao tác tạo *công việc* (*job*)
+
+- Click **New item** ở menu trái.
+- Trong khung **Enter an item name**, điền tên *job*, chẳng hạn `RequestAddress`.
+- Chọn kiểu của *job*. Ta sẽ chọn **Pipeline** để biểu diễn công việc thành một chuỗi công đoạn nhỏ. *Pipeline* mang nghĩa đường ống cho ta hình dung một chuỗi công việc như dòng nước chảy.
+- Click **OK**. Lúc này bạn có:
+
+<center>
+    <img src="assets/img/F301_4_7.png" width=800>
+</center>
+
+Đây là *cấu hình* (*configuration*) của công việc. Bạn có thể tìm lại nó bằng cách chọn **Configure** ở menu trái. Nhiều chức năng có thể được tùy chỉnh. Trong kịch bản, ta cần một trường (*field*) cho phép nhập địa chỉ cần tìm kiếm. Do vậy:
+
+- Click **This project is parameterized.**
+- Chọn **Add Parameter** -> **String Parameter**, đặt tên (**Name**) cho nó là "ADDRESS"
+
+<center>
+    <img src="assets/img/F301_4_10.png" width=800>
+</center>
+
+- Trong phần **Pipeline** -> **Definition**, bạn có thể thử viết đoạn mã bằng cách tham khảo ***try sample Pipeline*** hoặc dùng code tại [src/RequestAddress](src/RequestAddress). Ngôn ngữ được dùng trong mỗi *stage* là **groovy**. Lưu ý: Nhìn chung, bạn có thể viết mã ở các ngôn ngữ khác (*bash*, *python*), đặt trong kho quản lí phiên bản (như *github*) và chạy nó bằng lệnh `sh myscript.sh` hay `python myscript.python`. Phần này sẽ được giới thiệu sau. Do đó, bạn không cần quá quan tâm về *groovy*.
+
+<center>
+    <img src="assets/img/F301_4_11.png" width=800>
+</center>
+
+- Bỏ chọn **Use Groovy Sanbox**. Sandbox là công cụ để hạn chế script thực hiện một số thao tác do vấn đề bảo mật. Hiện ta đang thực hiện một thao tác thử đơn giản nên việc bỏ chọn không ảnh hưởng nhiều.
+
+- Nhấn **Save**
+
+#### 3.1.3 Chạy job
+
+- Ở menu
 
 ## 4. Ví dụ 2: Kiểm tra tự động với Jenkins
 
