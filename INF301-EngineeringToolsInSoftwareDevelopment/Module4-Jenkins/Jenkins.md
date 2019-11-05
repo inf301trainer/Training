@@ -255,7 +255,7 @@ Thao tác tạo *công việc* (*job*)
     <img src="assets/img/F301_4_11.png" width=800>
 </center>
 
-- Bỏ chọn **Use Groovy Sanbox**. Sandbox là công cụ để hạn chế script thực hiện một số thao tác do vấn đề bảo mật. Hiện ta đang thực hiện một thao tác thử đơn giản nên việc bỏ chọn không ảnh hưởng nhiều.
+- Bỏ chọn **Use Groovy Sandbox**. Sandbox là công cụ để hạn chế script thực hiện một số thao tác do vấn đề bảo mật. Hiện ta đang thực hiện một thao tác thử đơn giản nên việc bỏ chọn không ảnh hưởng nhiều.
 
 - Nhấn **Save**
 
@@ -293,6 +293,66 @@ Thao tác tạo *công việc* (*job*)
 Bạn có thể chơi với các mục khác trên thanh menu trái, đặc biệt là thay đổi các cấu hình trong **Configure**.
 
 Nhắc lại rằng bạn có thể tắt và bật lại docker container để tìm lại trạng thái đã làm việc.
+
+#### 3.1.4 Nhập (*import*) code của job từ xa
+
+Ta có thể *import* code của job từ xa (chẳng hạn, *github*) thay vì viết trực tiếp vào ô *Script* trong mục *Pipeline* của công việc.
+
+Để minh họa, giả sử code của job ở phần 3.1.3 đã được đưa lên [github](https://github.com/riduan91/Training/blob/master/INF301-EngineeringToolsInSoftwareDevelopment/Module4-Jenkins/src/RequestAddress.groovy)
+
+Bây giờ, ta tạo một *project/job* mới bằng cách (click vào biểu tượng *Jenkins* để về trang chủ nếu cần rồi) click vào **Create new item**. Đặt tên mới, chẳng hạn `RequestAddressGithub`, cho project.
+
+Tiếp tục quy trình:
+
+- Chọn **This project is parameterized**, Thêm biến `ADDRESS`. (xem 3.1.2)
+- Ở mục **Pipeline**, chọn `Pipeline script from SCM`.
+- Ở **SCM**, chọn `Git`.
+- Ở **Repository URL**, diền đường dẫn của kho *github*. Thêm tài khoản (*credentials*) của Github của bạn. Chọn branch trên *Github*.
+- Ở **Script Path**, điền đường dẫn đến file chứa mã.
+- **Save**
+
+<center>
+    <img src="assets/img/F301_4_16.png" width=800>
+</center>
+
+- **Build** *job* như ví dụ trước. Chú ý rằng lần này build sẽ thất bại vì ta buộc phải dùng *Groovy Sandbox*. Trong **console log**, ta thấy lỗi như sau:
+
+<center>
+    <img src="assets/img/F301_4_17.png" width=800>
+</center>
+
+ Click vào **Administrators can decide whether to approve or reject this signature.** và **approve** *signature : new groovy.json.JsonSlurperClassic*, ta thấy dòng này xuất hiện trong khung:
+
+<center>
+    <img src="assets/img/F301_4_18.png" width=800>
+</center>
+
+- Bây giờ ta **build** lại lần nữa (ta có thể gặp lại lỗi và cần *approve* lần nữa). Sau không quá 3 lần build, ta thấy *job* thành công. So với *logs* ở 3.1.3, bây giờ logs có thêm phần tương tác với git:
+
+``` sh
+Checking out git https://github.com/riduan91/Training.git into /var/jenkins_home/workspace/RequestAddressGithub@script to read INF301-EngineeringToolsInSoftwareDevelopment/Module4-Jenkins/src/RequestAddress.groovy
+using credential Github
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/riduan91/Training.git # timeout=10
+Fetching upstream changes from https://github.com/riduan91/Training.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials
+ > git fetch --tags --progress -- https://github.com/riduan91/Training.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 3e774765aa885e5bc86526d18f7ec1705827f77c (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3e774765aa885e5bc86526d18f7ec1705827f77c # timeout=10
+Commit message: "INF 301 - Module 4 - Jenkins example (cont'd)"
+ > git rev-list --no-walk 3e774765aa885e5bc86526d18f7ec1705827f77c # timeout=10
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/RequestAddressGithub
+[Pipeline] {
+...
+```
 
 ## 4. Ví dụ 2: Kiểm tra tự động với Jenkins
 
