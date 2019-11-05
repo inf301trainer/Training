@@ -261,7 +261,38 @@ Thao tác tạo *công việc* (*job*)
 
 #### 3.1.3 Chạy job
 
-- Ở menu
+- Ở menu trái, chọn **Build with Parameters**
+- Điền một địa chỉ nào đó ở Pháp trong khung
+
+<center>
+    <img src="assets/img/F301_4_12.png" width=800>
+</center>
+
+- Ấn **Build** (bạn có thể thực hiện nhiều lần)
+
+- Nếu job thất bại, ta có trạng thái như #1 của hình dưới. Nếu job thành công, trạng thái như #2.
+
+<center>
+    <img src="assets/img/F301_4_13.png" width=800>
+</center>
+
+- Click vào **#2** (hoặc một lần *Buiid* thành công), rồi **Console Output** ta nhìn thấy *logs* của job.
+
+<center>
+    <img src="assets/img/F301_4_14.png" width=800>
+</center>
+
+ Từ logs, ta thấy job đã thực hiện 3 chặng giống như trong mô tả code trong [src/RequestAddress](src/RequestAddress). Ở chặng 1, job thực hiện việc tải dữ liệu từ API. Ở chặng 2, job tách dữ liệu và tìm các thông tin cần thiết (kinh vĩ độ, mã bưu điện). Ở chặng 3, job hiển thị kết quả.
+
+- Để thấy rõ hơn các bước, ta có thể chọn **Pipeline Steps** ở menu trái.
+
+<center>
+    <img src="assets/img/F301_4_15.png" width=800>
+</center>
+
+Bạn có thể chơi với các mục khác trên thanh menu trái, đặc biệt là thay đổi các cấu hình trong **Configure**.
+
+Nhắc lại rằng bạn có thể tắt và bật lại docker container để tìm lại trạng thái đã làm việc.
 
 ## 4. Ví dụ 2: Kiểm tra tự động với Jenkins
 
