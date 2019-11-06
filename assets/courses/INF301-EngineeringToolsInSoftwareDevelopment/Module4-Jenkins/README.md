@@ -101,14 +101,10 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ### 2.4 Sử dụng cài đặt Virtual Box chuyển tiếp (*forward*) cổng máy ảo sang máy chính
 
 Ví dụ, chuyển tiếp cổng 8080 từ máy ảo (máy khách, *guest*) sang 30880 của máy chính (máy chủ, *host*) bằng cách chọn: `Settings -> Network -> Advanced -> Port Forwarding`.
-<center>
-    <img src="assets/img/F301_4_1.png" width=600>
-</center>
+![alt](assets/img/F301_4_1.png)
 
 Sau đó điền luật chuyển tiếp như sau:
-<center>
-    <img src="assets/img/F301_4_2.png" width=500>
-</center>
+![alt](assets/img/F301_4_2.png)
 
 Bạn có thể chọn tên luật tùy ý. IP máy ảo và máy chính có thể dùng `"0.0.0.0"`. Bạn cũng có thể dùng cổng khác của máy chủ thay vì 30880.
 
@@ -118,29 +114,21 @@ Sau bước 2.4, lúc này bạn có thể truy cập giao diện web của Jenk
 
 Điền password đã lưu từ terminal vào khung trống
 
-<center>
-    <img src="assets/img/F301_4_3.png" width=800>
-</center>
+![alt](assets/img/F301_4_3.png)
 
 Ở bước tiếp theo: chọn **`Install suggested plugins`**. Ứng dụng sẽ được cài đặt, bạn đồng thời sẽ nhìn thấy các dòng logs tại terminal trong máy ảo nơi bạn đã gõ lệnh chạy *Jenkins* với *docker*. Đồng thời logs và quá trình cài đặt cũng hiện ra trên giao diện web.
 
-<center>
-    <img src="assets/img/F301_4_4.png" width=800>
-</center>
+![alt](assets/img/F301_4_4.png)
 
 ### 2.6 Khai báo quản trị viên
 
 Sau bước 2.5, Jenkins sẽ đưa bạn đến trang dành cho khai báo quản trị viên. Chẳng hạn, ta khai báo quản trị viên `admin`.
 
-<center>
-    <img src="assets/img/F301_4_5.png" width=800>
-</center>
+![alt](assets/img/F301_4_5.png)
 
 Nháy vào `Save and Continue`. Trang ***Instance Configuration*** mở ra với URL của Jenkins được định sẵn là *`http://localhost:30880/`*. Đến đây việc cài đặt *Jenkins* hoàn tất. Bạn có giao diện như sau:
 
-<center>
-    <img src="assets/img/F301_4_6.png" width=800>
-</center>
+![alt](assets/img/F301_4_6.png)
 
 ### 2.7 Tắt, bật Jenkins
 
@@ -236,24 +224,18 @@ Thao tác tạo *công việc* (*job*)
 - Chọn kiểu của *job*. Ta sẽ chọn **Pipeline** để biểu diễn công việc thành một chuỗi công đoạn nhỏ. *Pipeline* mang nghĩa đường ống cho ta hình dung một chuỗi công việc như dòng nước chảy.
 - Click **OK**. Lúc này bạn có:
 
-<center>
-    <img src="assets/img/F301_4_7.png" width=800>
-</center>
+![alt](assets/img/F301_4_7.png)
 
 Đây là *cấu hình* (*configuration*) của công việc. Bạn có thể tìm lại nó bằng cách chọn **Configure** ở menu trái. Nhiều chức năng có thể được tùy chỉnh. Trong kịch bản, ta cần một trường (*field*) cho phép nhập địa chỉ cần tìm kiếm. Do vậy:
 
 - Click **This project is parameterized.**
 - Chọn **Add Parameter** -> **String Parameter**, đặt tên (**Name**) cho nó là "ADDRESS"
 
-<center>
-    <img src="assets/img/F301_4_10.png" width=800>
-</center>
+![alt](assets/img/F301_4_10.png)
 
 - Trong phần **Pipeline** -> **Definition**, bạn có thể thử viết đoạn mã bằng cách tham khảo ***try sample Pipeline*** hoặc dùng code tại [src/RequestAddress](src/RequestAddress). Ngôn ngữ được dùng trong mỗi *stage* là **groovy**. Lưu ý: Nhìn chung, bạn có thể viết mã ở các ngôn ngữ khác (*bash*, *python*), đặt trong kho quản lí phiên bản (như *github*) và chạy nó bằng lệnh `sh myscript.sh` hay `python myscript.python`. Phần này sẽ được giới thiệu sau. Do đó, bạn không cần quá quan tâm về *groovy*.
 
-<center>
-    <img src="assets/img/F301_4_11.png" width=800>
-</center>
+![alt](assets/img/F301_4_11.png)
 
 - Bỏ chọn **Use Groovy Sandbox**. Sandbox là công cụ để hạn chế script thực hiện một số thao tác do vấn đề bảo mật. Hiện ta đang thực hiện một thao tác thử đơn giản nên việc bỏ chọn không ảnh hưởng nhiều.
 
@@ -264,31 +246,23 @@ Thao tác tạo *công việc* (*job*)
 - Ở menu trái, chọn **Build with Parameters**
 - Điền một địa chỉ nào đó ở Pháp trong khung
 
-<center>
-    <img src="assets/img/F301_4_12.png" width=800>
-</center>
+![alt](assets/img/F301_4_12.png)
 
 - Ấn **Build** (bạn có thể thực hiện nhiều lần)
 
 - Nếu job thất bại, ta có trạng thái như #1 của hình dưới. Nếu job thành công, trạng thái như #2.
 
-<center>
-    <img src="assets/img/F301_4_13.png" width=800>
-</center>
+![alt](assets/img/F301_4_13.png)
 
 - Click vào **#2** (hoặc một lần *Buiid* thành công), rồi **Console Output** ta nhìn thấy *logs* của job.
 
-<center>
-    <img src="assets/img/F301_4_14.png" width=800>
-</center>
+![alt](assets/img/F301_4_14.png)
 
  Từ logs, ta thấy job đã thực hiện 3 chặng giống như trong mô tả code trong [src/RequestAddress](src/RequestAddress). Ở chặng 1, job thực hiện việc tải dữ liệu từ API. Ở chặng 2, job tách dữ liệu và tìm các thông tin cần thiết (kinh vĩ độ, mã bưu điện). Ở chặng 3, job hiển thị kết quả.
 
 - Để thấy rõ hơn các bước, ta có thể chọn **Pipeline Steps** ở menu trái.
 
-<center>
-    <img src="assets/img/F301_4_15.png" width=800>
-</center>
+![alt](assets/img/F301_4_15.png)
 
 Bạn có thể chơi với các mục khác trên thanh menu trái, đặc biệt là thay đổi các cấu hình trong **Configure**.
 
@@ -311,21 +285,15 @@ Tiếp tục quy trình:
 - Ở **Script Path**, điền đường dẫn đến file chứa mã.
 - **Save**
 
-<center>
-    <img src="assets/img/F301_4_16.png" width=800>
-</center>
+![alt](assets/img/F301_4_16.png)
 
 - **Build** *job* như ví dụ trước. Chú ý rằng lần này build sẽ thất bại vì ta buộc phải dùng *Groovy Sandbox*. Trong **console log**, ta thấy lỗi như sau:
 
-<center>
-    <img src="assets/img/F301_4_17.png" width=800>
-</center>
+![alt](assets/img/F301_4_17.png)
 
  Click vào **Administrators can decide whether to approve or reject this signature.** và **approve** *signature : new groovy.json.JsonSlurperClassic*, ta thấy dòng này xuất hiện trong khung:
 
-<center>
-    <img src="assets/img/F301_4_18.png" width=800>
-</center>
+![alt](assets/img/F301_4_18.png)
 
 - Bây giờ ta **build** lại lần nữa (ta có thể gặp lại lỗi và cần *approve* lần nữa cho một hàm tương tự). Sau không quá 3 lần build, ta thấy *job* thành công. So với *logs* ở 3.1.3, bây giờ logs có thêm phần tương tác với git:
 
