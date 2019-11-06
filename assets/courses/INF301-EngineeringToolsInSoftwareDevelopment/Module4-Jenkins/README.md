@@ -101,9 +101,11 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ### 2.4 Sử dụng cài đặt Virtual Box chuyển tiếp (*forward*) cổng máy ảo sang máy chính
 
 Ví dụ, chuyển tiếp cổng 8080 từ máy ảo (máy khách, *guest*) sang 30880 của máy chính (máy chủ, *host*) bằng cách chọn: `Settings -> Network -> Advanced -> Port Forwarding`.
+
 <img src="assets/img/F301_4_1.png" width="800"/>
 
 Sau đó điền luật chuyển tiếp như sau:
+
 <img src="assets/img/F301_4_2.png" width="800"/>
 
 Bạn có thể chọn tên luật tùy ý. IP máy ảo và máy chính có thể dùng `"0.0.0.0"`. Bạn cũng có thể dùng cổng khác của máy chủ thay vì 30880.
@@ -118,7 +120,7 @@ Sau bước 2.4, lúc này bạn có thể truy cập giao diện web của Jenk
 
 Ở bước tiếp theo: chọn **`Install suggested plugins`**. Ứng dụng sẽ được cài đặt, bạn đồng thời sẽ nhìn thấy các dòng logs tại terminal trong máy ảo nơi bạn đã gõ lệnh chạy *Jenkins* với *docker*. Đồng thời logs và quá trình cài đặt cũng hiện ra trên giao diện web.
 
-<img src="assets/img/F301_4_4.png" width="800"/>
+<img src="assets/img/F301_4_19.png" width="800"/>
 
 ### 2.6 Khai báo quản trị viên
 
