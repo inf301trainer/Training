@@ -327,7 +327,7 @@ Tiếp tục quy trình:
     <img src="assets/img/F301_4_18.png" width=800>
 </center>
 
-- Bây giờ ta **build** lại lần nữa (ta có thể gặp lại lỗi và cần *approve* lần nữa). Sau không quá 3 lần build, ta thấy *job* thành công. So với *logs* ở 3.1.3, bây giờ logs có thêm phần tương tác với git:
+- Bây giờ ta **build** lại lần nữa (ta có thể gặp lại lỗi và cần *approve* lần nữa cho một hàm tương tự). Sau không quá 3 lần build, ta thấy *job* thành công. So với *logs* ở 3.1.3, bây giờ logs có thêm phần tương tác với git:
 
 ``` sh
 Checking out git https://github.com/riduan91/Training.git into /var/jenkins_home/workspace/RequestAddressGithub@script to read INF301-EngineeringToolsInSoftwareDevelopment/Module4-Jenkins/src/RequestAddress.groovy
@@ -353,6 +353,8 @@ Running on Jenkins in /var/jenkins_home/workspace/RequestAddressGithub
 [Pipeline] {
 ...
 ```
+
+Đến đây việc lưu trữ code của *job* từ *Github* đã thành công. Nhớ rằng bạn có thể tắt và bật lại docker container để tìm lại trạng thái đã làm việc.
 
 ## 4. Ví dụ 2: Kiểm tra tự động với Jenkins
 
