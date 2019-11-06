@@ -2,4 +2,4 @@
 
 ## Nội dung
 
-- [**Module 4 - Jenkins**](Module4-Jenkins/README.md)
+- [**Module 4 - Jenkins**](Module4-Jenkins)
