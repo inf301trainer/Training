@@ -287,7 +287,7 @@ Tiếp tục quy trình:
 - Ở **Script Path**, điền đường dẫn đến file chứa mã.
 - **Save**
 
-<img src="assets/img/F301_4_16.png" width="800"/>
+<img src="assets/img/F301_4_20.png" width="800"/>
 
 - **Build** *job* như ví dụ trước. Chú ý rằng lần này build sẽ thất bại vì ta buộc phải dùng *Groovy Sandbox*. Trong **console log**, ta thấy lỗi như sau:
 
