@@ -1,0 +1,25 @@
+<div class="toc-item">
+  <ul class="nav flex-column">
+    <li *ngFor="let section of categories;">
+      <div *ngIf="!section[0]">
+        <br>
+      </div>
+      <div *ngIf="section[0]" [style.margin-left]="section[2]*30 + 'px'" [style.margin-top]="(8 - section[2] * 3) + 'px'">
+        <a *ngIf="section[1]!=''"class="toc-link" [href]="section[1]" >
+          <h6 *ngIf="section[2]==0 || section[2]==1">
+            <strong>{{ section[0] }}</strong>
+          </h6>
+          <div *ngIf="section[2]==2">
+              {{ section[0] }}
+          </div>
+        </a>
+        <h6 *ngIf="section[1]=='' && (section[2]==0 || section[2]==1)">
+          <strong>{{ section[0] }}</strong>
+        </h6>
+        <div *ngIf="section[1]=='' && section[2]==2">
+            {{ section[0] }}
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

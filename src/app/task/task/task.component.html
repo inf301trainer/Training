@@ -1,0 +1,16 @@
+<h1>
+  {{title}}
+</h1>
+
+<hr>
+
+<div *ngFor="let task of tasks;">
+  <h5>{{task.project}} - {{task.title}}</h5>
+  <div *ngFor="let child of task.children;">
+    <h6>{{child.title}}</h6>
+    <div *ngFor="let grandchild of child.children">
+      {{grandchild.title}}
+    </div>
+  </div>
+  <hr>
+</div>

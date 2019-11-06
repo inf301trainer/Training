@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<div align="right">
+  <button class="btn btn-outline-info" (click)="showLeftPanel=!showLeftPanel;">{{showLeftPanel?"Hide":"Show"}} left menu.</button>
+</div>
+
+<div class="row flex-xl-nowrap">
+  <div *ngIf="showLeftPanel" class="col-12 col-lg-2" style="padding: 30px; border-right: 1px solid rgba(0, 0, 0, 0.1)">
+      <app-menu></app-menu>
+  </div>
+  <div [class]="'col-12 ' + (showLeftPanel?'col-lg-9':'col-lg-11')" style="padding: 30px;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

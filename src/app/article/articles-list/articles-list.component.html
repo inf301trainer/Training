@@ -1,0 +1,23 @@
+<div *ngFor="let catId of categoryList;">
+  <div *ngIf="selectedCategories.indexOf(catId) >= 0;">
+    <h1>Các bài viết - {{categories[catId].name}}</h1>
+    <hr>
+    <table class="list-article-table">
+      <colgroup>
+        <col style="width:80%;" />
+        <col style="width:20%;" />
+      </colgroup>
+      <tr *ngFor="let article of (articleValueList | filterByPrivacy : 'contains' : 'categories': catId | filterByPrivacy : 'unless' : 'private'); let i = index;">
+        <td>
+          <a [href]="'/article/' + article.id">
+            <h6 >{{article.title}}</h6>
+          </a>
+        </td>
+        <td>
+          {{article.date}}
+        </td>
+      </tr>
+      <br>
+    </table>
+  </div>
+</div>

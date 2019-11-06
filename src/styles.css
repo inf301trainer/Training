@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+
+h1, h2, h3, h4, h5 {
+  color: #0088dd;
+}
+
+h6, a {
+  color: #009900;
+}
+
+h1>a, h2>a, h3>a, h4>a, h5>a {
+  color: #0088dd;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3, h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+body, a, input, button, label {
+  font-size: 0.8rem
+}
+
+table, tr, th, td {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+th {
+  background-color: #c9e4d0;
+}
+
+td {
+  background-color: #f3fff3;
+}
+
+body, div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+table.list-article-table, table.list-lecture-table {
+  width: 70%;
+}

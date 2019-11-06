@@ -1,0 +1,29 @@
+<div *ngFor="let cId of courseList;">
+  <div *ngIf="!course['courseId'] || course['courseId'] == cId">
+    <h3>
+      {{cId | uppercase}} - {{courses[cId]['name']}}
+    </h3>
+    <hr>
+
+    <table class="list-lecture-table">
+      <colgroup>
+        <col style="width:80%;"/>
+        <col style="width:20%;"/>
+      </colgroup>
+
+      <tr *ngFor="let lectureId of lectureList;" >
+        <td *ngIf="lectures[lectureId].categories.indexOf(cId) >= 0;">
+          <a [href]="'/lecture/' + lectureId">
+            <strong>{{lectures[lectureId].title}}</strong>
+          </a>
+        </td>
+          
+        <td *ngIf="lectures[lectureId].categories.indexOf(cId) >= 0;">
+          ({{lectures[lectureId].date.slice(8, 10)}}-{{lectures[lectureId].date.slice(5, 7)}}-{{lectures[lectureId].date.slice(0, 4)}})
+        </td>
+      </tr>
+
+    </table>
+    <hr>
+  </div>
+</div>

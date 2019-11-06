@@ -1,0 +1,4 @@
+<h2>{{title}}</h2>
+<hr>
+<div *ngIf="!private" [innerHTML]="content" ></div>
+<div *ngIf="private">Private content</div>
