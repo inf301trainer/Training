@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
 
+body {
+  padding: 5%;
+}
+
 h1, h2, h3, h4, h5 {
   color: #0088dd;
 }
