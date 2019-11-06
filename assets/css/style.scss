@@ -2,82 +2,89 @@
 ---
 
 
-
 header, footer {
-  display: none;
+    display: none;
+}
+
+nav {
+    float: left;
+     width: 20%;
+    padding: 5%;
 }
 
 section {
-  padding: 60px;
+    float: left;
+    width: 20%;
+    padding: 5%;
 }
 
 h1, h2, h3, h4, h5 {
-  color: #0088dd;
+    color: #0088dd;
 }
 
 h1 {
-  padding-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 h2 {
-  padding-bottom: 6px;
+    padding-bottom: 6px;
 }
 
 h3 {
-  padding-bottom: 4px;
+    padding-bottom: 4px;
 }
 
 h4, h5, h6 {
-  padding-bottom: 2px;
+    padding-bottom: 2px;
 }
 
 h6, a {
-  color: #009900;
+    color: #009900;
 }
 
 h1>a, h2>a, h3>a, h4>a, h5>a {
-  color: #0088dd;
+    color: #0088dd;
 }
 
 h1 {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 h3, h4 {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 h5 {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 h6 {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 body, a, input, button, label {
-  font-size: 0.8rem
+    font-size: 0.8rem
 }
 
 table, tr, th, td {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 th {
-  background-color: #c9e4d0;
+    background-color: #c9e4d0;
 }
 
 td {
-  background-color: #f3fff3;
+    background-color: #f3fff3;
 }
 
 table.list-article-table, table.list-lecture-table {
-  width: 70%;
+    width: 70%;
 }
