@@ -78,7 +78,7 @@ Lưu và mở lại máy ảo. Từ đây, *Bitbucket* có thể truy cập *Bit
 Đến đây, quá trình cài đặt hoàn tất. Ta có thể tắt và bật Bitbucket nếu cần bằng
 
 ``` sh
-anybody@anywhere:~ $ docker stop bitbucket 
+anybody@anywhere:~ $ docker stop bitbucket
 bitbucket
 anybody@anywhere:~ $ docker start bitbucket
 bitbucket
