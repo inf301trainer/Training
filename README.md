@@ -8,8 +8,8 @@
 
 ### Đang sửa chữa
 
-- #### INF 102 - Đại cương về lập trình Python
+- ###### INF 102 - Đại cương về lập trình Python
 
-- #### DSC 101 - Khoa học dữ liệu
+- ###### DSC 101 - Khoa học dữ liệu
 
-- #### DSC 111 - Học máy sâu
+- ###### DSC 111 - Học máy sâu
