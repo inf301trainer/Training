@@ -12,7 +12,7 @@
 
 Trong khóa học này, ta cần kết nối hệ quản lí phiên bản với nhiều công cụ khác như *Jenkins*, *Artifactory*. Vì vậy ta muốn hệ quản lí phiên bản của mình được cài đặt ở dạng *offline* (*cục bộ*). Ta có thể sử dụng phiên bản tương tự *Github* là *Gitlab*. Trong module này ta sẽ sử dụng một sản phẩm khác là ***Bitbucket***. (Tất nhiên, *Bitbucket* cũng là một sản phẩm online)
 
-### 4.0 Tạo một tài khoản tại [Atlassian.com](my.arlassian.com)
+### 4.0 Tạo một tài khoản tại *Atlassian.com*
 
 ### 4.1 Cài đặt **Bitbucket**
 
