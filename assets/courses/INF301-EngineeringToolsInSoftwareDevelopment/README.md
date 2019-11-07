@@ -1,4 +1,4 @@
-# INF 301 - Các công cụ kĩ thuật hỗ trợ phát triển phần mềm
+# INF 301 - Các công cụ hỗ trợ phát triển phần mềm
 
 ## Nội dung
 
