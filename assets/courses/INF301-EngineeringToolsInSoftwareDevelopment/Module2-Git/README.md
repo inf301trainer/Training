@@ -13,19 +13,37 @@ Bạn có thể liên tưởng đến *Google Drive*/*Google Docs* khi mọi th�
 
 Giải pháp này dẫn đến vấn đề: các va chạm sẽ diễn ra thường xuyên, đặc biệt khi các thành viên sửa chữa tài liệu tại cùng một dòng. Tình huống còn nghiêm trọng hơn khi đối tượng ta làm việc là code chứ không phải tài liệu. Nếu bạn dùng phiên bản tại thời điểm *A* nào đó khi các thành viên khác chưa viết xong một câu lệnh, hiển nhiên code sẽ lỗi và không thực hiện được.
 
-Đấy là lí do ta cần một **hệ quản lí phiên bản**. Code của dự án sẽ được lưu trữ trong một *thư mục* hay *kho* (với *git* sẽ tìm hiểu ở phần tiếp theo, thuật ngữ tiếng Anh là **repository**). Mỗi thành viên sẽ tải về một phiên bản, làm việc trên đó để đám bảo tính cục bộ (*local*) và độc lập với các thành viên khác. Chỉ khi việc cập nhật code trở nên hoàn chỉnh, thành viên mới cập nhật code vào kho chính online.
+Đấy là lí do ta cần một **hệ quản lí phiên bản** (**Version Control System** hay **VCS**). Code của dự án sẽ được lưu trữ trong một *thư mục* hay *kho* (với *git* sẽ tìm hiểu ở phần tiếp theo, thuật ngữ tiếng Anh là **repository**). Mỗi thành viên sẽ tải về một phiên bản, làm việc trên đó để đám bảo tính cục bộ (*local*) và độc lập với các thành viên khác. Chỉ khi việc cập nhật code trở nên hoàn chỉnh, thành viên mới cập nhật code vào kho chính online.
+
+**Hệ quản lí phiên bản** giúp quản lí code và lịch sử thay đổi, từ đó bạn có thể quay lại một phiên bản trước đó, hoặc dùng một phiên bản do người khác cập nhật nếu cần.
 
 ### 1.2 Hệ quản lí phiên bản tập trung
+
+Hình dưới đây mô tả một **hệ quản lí phiên bản tập trung** (**centralized version control system**).
 
 <img src="assets/img/F301_2_5.png" width="300"/>
 
 (Nguồn: [homes.cs.washington.edu](http://homes.cs.washington.edu))
 
+Theo đó, có một *kho* (**repository**) online (vẽ ở tầng trên cùng). Các thành viên sẽ tải kho này về thành các thư mục cục bộ (*working copy* trong hình). Hành động tải này được thể hiện bằng mũi tên *update* trong hình. Sau khi sửa chữa code, thành viên cập nhật phiên bản thư mục cục bộ của mình lên kho online. Hành động này được thể hiện bằng mũi tên *commit*. Hệ quản lí phiên bản tập trung hay được sử dụng nhất là [Subversion](https://subversion.apache.org/). Nhìn chung, nếu có hai thành viên cùng sửa chữa từ một phiên bản code online (tạm gọi là *A*) và *commit* 2 phiên bản mới (tạm gọi là *B1* và *B2*), hệ cho phép trộn lẫn hai phiên bản này thành một phiên bản chung (*B*) gồm cả các thay đổi của hai người, nếu chúng không va chạm (*conflict*) với nhau.
+
 ### 1.3 Hệ quản lí phiên bản phân tán
+
+Với một **hệ quản lí phiên bản phân tán** (**distributed version control system**):
 
 <img src="assets/img/F301_2_6.png" width="300"/>
 
 (Nguồn: [homes.cs.washington.edu](http://homes.cs.washington.edu))
+
+Ta thấy có thêm một tầng *online* nữa nằm giữa kho chính và các thư mục cục bộ. Đó chính là các phiên bản *online* hoặc *offline* khác, ban đầu được sao chép từ kho chính, được biểu diễn bằng *Repository* trong tầng giữa của hình vẽ. Trong *Github* các kho này có thể được gọi bằng khái niệm **nhánh** (**branch**) nếu phiên bản được sao chép nằm ở cùng tài khoản với kho gốc; hoặc được gọi là **bản sao**/**bản chĩa** (**fork**) nếu nó nằm ở nằm ở tài khoản của người dùng. Dù gọi là gì, chúng vẫn là một phiên bản *online* của kho chính. Các thành viên *update* và *commit* trên các phiên bản (*fork*, *branch*) này. Việc cập nhật code lên kho chính thức được thực hiện bằng các thao tác riêng (mô tả bằng **pull** và **push** trong hình vẽ).
+
+#### Chú ý:
+
+Hình vẽ trên mô tả đơn giản khái niệm *hệ quản lí phiên bản phân tán*, tuy vậy nó chưa đầy đủ với **git**. Trên thực tế, ngoài các động từ *pull*, *push*, ta còn có *clone*, *fork*, *create branch*, *pull request*, *merge* với các chức năng khác nhau. Ta sẽ tìm hiểu kĩ hơn trong các phần tiếp theo.
+
+### 1.4 Ưu điểm của *hệ quản lí phiên bản phân tán* so với *hệ tập trung*
+
+Bài báo tại [itviec.com](https://itviec.com/blog/git-la-gi/) nêu quan điểm của những người có kinh nghiệm về việc tại sao hệ phân tán có ưu thế hơn (*Sắp xếp công việc tốt hơn*, *Linh hoạt khi làm nhiều công việc*, *Tự tin thể hiện ý tưởng mới etc.*). Các lợi ích này đều bắt nguồn từ tính độc lập lẫn nhau giữa các nhánh.
 
 ## 2 Github
 
@@ -111,3 +129,4 @@ bitbucket
 
 1. [confluence.atlassian.com/bitbucketserver](https://confluence.atlassian.com/bitbucketserver/bitbucket-server-installation-guide-867338382.html)
 2. [hub.docker.com](https://hub.docker.com/r/atlassian/bitbucket-server/)
+3. [subversion.apache.org](https://subversion.apache.org/)
