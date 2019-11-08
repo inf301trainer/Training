@@ -1,8 +1,31 @@
-# Mode 2 - Git. Github. Bitbucket
+# Module 2 - Git. Github. Bitbucket
 
 ## 1 Hệ quản lí phiên bản
 
-### Quản lí phiên bản phân tán
+### 1.1 Quản lí phiên bản
+
+Tưởng tượng bạn làm việc nhiều người trong cùng một dự án, trên cùng một tập hợp các file code và dữ liệu. Tất cả các thành viên đều thay đổi thường xuyên code và mỗi người, sau một thời gian, cần dùng phiên bản code mới được cập nhật bởi các thành viên code. Sẽ là tai họa nếu không có một sự quản lí tập trung các phiên bản code mà mỗi người làm việc.
+
+Bạn có thể liên tưởng đến *Google Drive*/*Google Docs* khi mọi thành viên làm việc trên cùng một tài liệu và xem đây là một giải pháp. Nghĩa là:
+
+- Các thành viên làm việc trực tiếp trên một file
+- Các thành viên đều phải có mạng để truy cập đến file đó.
+
+Các va chạm sẽ diễn ra thường xuyên, đặc biệt khi các thành viên sửa chữa tại cùng một vị trí. Tình huống còn nghiêm trọng hơn khi đó là code. Nếu bạn dùng phiên bản tại thời điểm *A* nào đó khi các thành viên khác chưa viết xong một câu lệnh, hiển nhiên code sẽ lỗi và không thực hiện được.
+
+Đấy là lí dọ ta cần một **hệ quản lí phiên bản**. Code của dự án sẽ được lưu trữ trong một *thư mục* hay *kho* (với *git* sẽ tìm hiểu ở phần tiếp theo, thuật ngữ tiếng Anh là **repository**). Mỗi thành viên sẽ tải về một phiên bản, làm việc trên đó để đám bảo tính cục bộ (*local*) và độc lập với các thành viên khác. Chỉ khi việc cập nhật code trở nên hoàn chỉnh, thành viên mới cập nhật code vào kho chính online.
+
+### 1.2 Hệ quản lí phiên bản tập trung
+
+<img src="assets/img/F301_2_5.png" width="400"/>
+
+(Nguồn: [homes.cs.washington.edu](homes.cs.washington.edu))
+
+### 1.3 Hệ quản lí phiên bản phân tán
+
+<img src="assets/img/F301_2_6.png" width="400"/>
+
+(Nguồn: [homes.cs.washington.edu](homes.cs.washington.edu))
 
 ## 2 Github
 
@@ -83,3 +106,8 @@ bitbucket
 anybody@anywhere:~ $ docker start bitbucket
 bitbucket
 ```
+
+## Nguồn tư liệu
+
+1. [confluence.atlassian.com/bitbucketserver](https://confluence.atlassian.com/bitbucketserver/bitbucket-server-installation-guide-867338382.html)
+2. [hub.docker.com](https://hub.docker.com/r/atlassian/bitbucket-server/)
