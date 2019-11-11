@@ -45,9 +45,43 @@ Hình vẽ trên mô tả đơn giản khái niệm *hệ quản lí phiên bả
 
 Bài báo tại [itviec.com](https://itviec.com/blog/git-la-gi/) nêu quan điểm của những người có kinh nghiệm về việc tại sao hệ phân tán có ưu thế hơn (*Sắp xếp công việc tốt hơn*, *Linh hoạt khi làm nhiều công việc*, *Tự tin thể hiện ý tưởng mới etc.*). Các lợi ích này đều bắt nguồn từ tính độc lập lẫn nhau giữa các nhánh.
 
-## 2 Github
+## 2 Git
 
-## 3 Git
+Mô tả ở phần 1 là mô hình cơ bản của *hệ quản lí phiên bản phân tán*. **git** là *framework* (*cơ cấu*) cho hệ quản lí loại này, với mô hình cụ thể hơn như sau:
+
+<img src="assets/img/F301_2_7.png" width="800"/>
+
+Ta sẽ giải thích các tầng và các khái niệm trong mô hình.
+
+Cơ cấu được tổ chức bằng cách ở hai cấp *remote* (*online*, với code được lưu trong một sản phẩm online như **Github**, **Bitbucket**) và  hay *local* (hay *offline*, với code được lưu trong máy người dùng). Hai tầng trên cùng trong hình là tầng *remote*, hai tầng dưới là *local*.
+
+Phần này chỉ mô tả sơ lược các khái niệm. Về ví dụ thực hành, ta tìm hiểu ở phần 3 và 4 sau.
+
+## 2.1 Các khái niệm
+
+Trong hình vẽ,
+
+- **Remote repository** là một *thư mục*/*kho* online chứa code của dự án. Các hộp màu xanh lá cây và xanh dương là các *remote repository*.
+
+- **Main repository** (đôi khi được gọi là *upstream*) là thư mục/kho code chính của dự án. Trong thư mục này có một nhánh (**branch**), thường được đặt tên là **develop**, là nhánh chính của dự án. Trong hình vẽ, hộp màu xanh lá với branch *develop* là *main repository* và *branch* chính của dự án.
+
+- **(Remote) Branch** là một copy của một *repository*, có thể mang code giống hay khác branch chính của *main repository*. Trong hình vẽ, hộp xanh dương bên trái mô tả một *branch* của *main repository*.
+
+- **Forked repository** là thư mục/kho code được copy từ *main repository* về tài khoản của một người dùng khác (trên *Github* hay sản phẩm quản lí phiên bản online). *Forked repository* chứa các *branch* từ *main repository* và người dùng cũng có thể tạo các *branch* khác. Trong hình vẽ, hộp xanh dương bên phải mô tả một *branch* của *main
+
+Như vậy, ở cấp online, một phiên bản code tại một thời điểm được đồng nhất với một nhánh (*branch*) của một kho (*repository*) tại thời điểm đó. 
+
+Tại cùng thời điểm có thể tồn tại nhiều phiên bản code khác nhau (ứng với nhiều người dùng khác nhau, tại các phần dự án khác nhau).
+
+Tiếp theo,
+
+- **Local repository**, **local branch** là cấu trúc git copy từ phiên bản online (*remote repository*, *remote branch*) về máy tính người dùng, chứa cấu trúc git. Trong hình vẽ, nó ứng với tầng thứ ba (các hộp màu da cam). Người ta cũng gọi tầng này là *staging environment*.
+
+- **Working directory** là phiên bản code được lưu trên máy người dùng ứng với branch mà người dùng đang làm việc ở thời điểm hiện tại. Nó được lưu trong một thư mục trong máy tính cá nhân người dùng.
+
+Trong hình vẽ cũng đưa ra 3 phương án tiếp cận với *main repository*. Ở nhánh giữa, người dùng tải trực tiếp *main repository* về *local repository*. Ở nhánh bên trái, người dùng tạo một nhánh (*branch*) online trong chính *main repository* và tải phiên bản đó về *local repository*. Ở nhánh bên phải, người dùng copy *main repository* về tải khoản riêng, thành *forked repository* và tải phiên bản đó về *local repository*.
+
+## 3 Github
 
 ## 4 Bitbucket
 
