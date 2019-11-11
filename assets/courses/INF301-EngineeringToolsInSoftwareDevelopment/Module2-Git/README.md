@@ -69,7 +69,7 @@ Trong hình vẽ,
 
 - **Forked repository** là thư mục/kho code được copy từ *main repository* về tài khoản của một người dùng khác (trên *Github* hay sản phẩm quản lí phiên bản online). *Forked repository* chứa các *branch* từ *main repository* và người dùng cũng có thể tạo các *branch* khác. Trong hình vẽ, hộp xanh dương bên phải mô tả một *branch* của *main
 
-Như vậy, ở cấp online, một phiên bản code tại một thời điểm được đồng nhất với một nhánh (*branch*) của một kho (*repository*) tại thời điểm đó. 
+Như vậy, ở cấp online, một phiên bản code tại một thời điểm được đồng nhất với một nhánh (*branch*) của một kho (*repository*) tại thời điểm đó.
 
 Tại cùng thời điểm có thể tồn tại nhiều phiên bản code khác nhau (ứng với nhiều người dùng khác nhau, tại các phần dự án khác nhau).
 
