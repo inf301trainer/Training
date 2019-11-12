@@ -468,7 +468,9 @@ git pull origin B
 
 ### 3.4 Minh họa nhánh phải của hình: tạo *forked remote repository* và làm việc với nó
 
-#### 3.4.1 Fork
+#### 3.4.1 *Fork* (*chĩa*)
+
+Một phương pháp khác để tạo bản copy online của *main remote repository* là tạo một *forked remote repository*. Động từ tương ứng là *chĩa* (*fork*). Ở đây, ta không tạo 1 nhánh, mà tạo một thư mục trong tài khoản của cá nhân. Một nhánh trong *forked remote repository* cũng không khác gì một nhánh (*branch*) trong *main remote repository*. Các bước ở tầng dưới được thực hiện tương tự phần 3.3.
 
 ### 3.5 Một số lưu ý
 
