@@ -392,15 +392,85 @@ Bây giờ, khi kiểm tra lại trên *remote repository*, ta thấy 2 nhánh `
 
 #### 3.3.5 Tạo *pull request*
 
+<img src="assets/img/F301_2_30.png" width="300"/>
+
+Giả sử nhóm *A* đã hoàn thành phần chỉnh sửa code và muốn đưa vào nhánh chính **master** của *main remote repository*. Thành viên sẽ tạo 1 **pull request** bằng cách click **New pull request**.
+
+<img src="assets/img/F301_2_27.png" width="800"/>
+
+Điền thông tin của **pull request**, nhấn **Create pull request**. Đảm bảo **base** là `master` và **compared** là `A` (trộn `A` vào `master`).
+
+<img src="assets/img/F301_2_28.png" width="800"/>
+
+Trong các dự án thực sự, ta cần sự kiểm tra của các thành viên khác.
+
+<img src="assets/img/F301_2_29.png" width="800"/>
+
+Muốn vậy ta chọn **Reviewers** ở cột bên phải và điền tên/username của thành viên kiểm tra.
+
+Người kiểm tra sẽ **approve** (đồng ý), **decline** (từ chối) *pull request* hoặc bình luận. Nhóm `A` có thể tiếp tục sửa chữa code (`git add`, `git commit`, `git push`), sự thay đổi sẽ được cập nhật trên *pull request* cho đến khi được *approve*.
+
 #### 3.3.6 Merge
+
+<img src="assets/img/F301_2_30.png" width="800"/>
+
+Một *pull request* được tán thành (*approve*) có thể được nhập/trộn (*merge*) vào nhánh chính `master`. Ví dụ, với nhánh `A`, click vào *pull request* và click vào **Merge pull request** -> **Confirm merge**.
+
+Lúc này, kiểm tra lại nhánh `master`, ta thấy nó cũng bao gồm các *commit* trong `A`, cụ thể là cũng chứa file `A.txt`.
+
+<img src="assets/img/F301_2_31.png" width="800"/>
 
 #### 3.3.7 Cập nhật code sau các lần merge: *git fetch*, *git merge*, *git pull*
 
-## 3.4 Minh họa nhánh phải của hình: tạo *forked remote repository* và làm việc với nó
+<img src="assets/img/F301_2_32.png" width="300"/>
+
+Giả sử code trên *remote repository* đã được thay đổi sau khi merge branch `A` vào `master`. Bây giờ tại nhóm `B` có thể cập nhật phiên bản mới của code từ nhánh `A`, `master` cũng như `B`.
+
+- **git fetch** là hành động tải code về *local repository*.
+
+- **git merge** là hành động trộn code từ *local repository* (sau khi fetch) vào *working directory*.
+
+``` sh
+# Check trạng thái branch
+anybody@anywhere:~/workspace/B/inf301 B 12s ± git branch
+* B
+  master
+
+# git fetch
+anybody@anywhere:~/workspace/B/inf301 B ± git fetch --all
+Fetching origin
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From https://github.com/inf301trainer/inf301
+   483530b..5352166  A          -> origin/A
+   483530b..4c3767c  master     -> origin/master
+
+# git merge
+anybody@anywhere:~/workspace/B/inf301 B ± git merge origin master
+Merge made by the 'recursive' strategy.
+ A.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 A.txt
+
+```
+
+- **git pull** là tổng hợp hành động từ *git fetch* và *git merge*.
+
+``` sh
+# Dùng khi fetch và merge với phiên bản online của chính branch
+git pull
+# Dùng khi fetch và merge với phiên bản online của branch khác
+git pull origin B
+```
+
+### 3.4 Minh họa nhánh phải của hình: tạo *forked remote repository* và làm việc với nó
 
 #### 3.4.1 Fork
 
-## 3.5 Một số lưu ý
+### 3.5 Một số lưu ý
 
 #### 3.5.1 gitignore
 
