@@ -201,6 +201,14 @@ origin  https://github.com/inf301trainer/inf301.git (fetch)
 origin  https://github.com/inf301trainer/inf301.git (push)
 ```
 
+Lúc này, trên tài khoản Github, ta thấy code đã được cập nhật (`hello_world.py`)
+
+<img src="assets/img/F301_2_17.png" width="600"/>
+
+Nếu click vào **2 commits**, ta có thể thấy danh sách các commits cùng các message của chúng. Đây là cơ sở giúp ta tìm lại các phiên bản code trước đó.
+
+<img src="assets/img/F301_2_18.png" width="600"/>
+
 Mô hình này thích hợp khi bạn là người làm việc duy nhất với *remote repository*. Để tiếp tục làm việc và đẩy code lên *remote repository*, ta thực hiện luân phiên `git add`, `git commit`, `git push`.
 
 ### 3.3 Minh họa nhánh trái của hình: làm việc với nhánh phụ của *remote repository* và trộn vào nhánh chính
