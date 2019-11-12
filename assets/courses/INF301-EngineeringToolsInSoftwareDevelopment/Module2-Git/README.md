@@ -217,9 +217,91 @@ Khi có 2 người trở lên cùng làm việc với cùng một *remote reposi
 
 #### 3.3.1 Tạo nhánh (*create branch*)
 
+<img src="assets/img/F301_2_21.png" width="600"/>
+
+Giả sử ta muốn tạo 2 nhánh *A*, *B* cho 2 tính năng của dự án, được phát triển bởi 2 nhóm lập trình viên.
+
+Muốn vậy,
+
+- Từ *remote repository* trong github.com, click tại **master**, tạo nhánh (*branch*) **A** từ (*from*) **master**. Làm tương tự với **B**.
+
+  <img src="assets/img/F301_2_20.png" width="600"/>
+
+- Lúc này, ta có danh sách các nhánh:
+
+  <img src="assets/img/F301_2_22.png" width="200"/>
+
 #### 3.3.2 *git clone*
 
+<img src="assets/img/F301_2_14.png" width="300"/>
+
+*git clone* đã được giới thiệu ở phần 3.2.3. Chú ý rằng hiện tại ta làm việc với một thư mục không rỗng.
+
+Ta sẽ *clone* *remote repository* vào 2 *local repository* mới `A` và `B`
+
+Ta lấy địa chỉ clone từ
+
+<img src="assets/img/F301_2_23.png" width="800"/>
+
+``` sh
+anybody@anywhere:~ $ cd workspace/
+
+# Tạo thư mục cần thiết
+anybody@anywhere:~/workspace $ mkdir A
+anybody@anywhere:~/workspace $ mkdir B
+
+# Đến thư mục A và clone
+anybody@anywhere:~/workspace $ cd A
+
+anybody@anywhere:~/workspace/A $ git clone https://github.com/inf301trainer/inf301.git
+Cloning into 'inf301'...
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 5 (delta 0), reused 5 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+
+# Đến thư mục B và clone
+anybody@anywhere:~/workspace/A $ cd ..
+anybody@anywhere:~/workspace $ cd B
+anybody@anywhere:~/workspace/B $ git clone https://github.com/inf301trainer/inf301.git
+Cloning into 'inf301'...
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 5 (delta 0), reused 5 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+```
+
+Khi clone, mọi branch của *remote repository* đều được update thành branch tương ứng của *local repository*.
+
 #### 3.3.3 *git checkout*
+
+**git checkout** là thao tác chuyển và tải code từ *branch* nào đó của *local git repository* vào working directory. Lúc này, working directory sẽ chứa code của *branch* tương ứng từ *local git repository*.
+
+<img src="assets/img/F301_2_24.png" width="300"/>
+
+Để kiểm tra branch của *local git repository* đang kết nối với local working directory, ta dùng **git branch**.
+
+``` sh
+# Đến thư mục git của nhóm A
+anybody@anywhere:~/workspace/A 128 $ cd
+anybody@anywhere:~ $ cd workspace/A/inf301/
+
+# Ban đầu, chỉ có nhánh chính được liệt kê
+anybody@anywhere:~/workspace/A/inf301 master ± git branch
+* master
+
+# Chuyển sang nhánh A
+anybody@anywhere:~/workspace/A/inf301 master ± git checkout A
+Branch 'A' set up to track remote branch 'A' from 'origin'.
+Switched to a new branch 'A'
+
+# Bây giờ có 2 nhánh, trong đó A (có dấu * ở đầu) là nhánh đang làm việc
+anybody@anywhere:~/workspace/A/inf301 A ± git branch
+* A
+  master
+```
 
 #### 3.3.4 *git push*
 
