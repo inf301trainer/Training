@@ -396,15 +396,15 @@ Bây giờ, khi kiểm tra lại trên *remote repository*, ta thấy 2 nhánh `
 
 Giả sử nhóm *A* đã hoàn thành phần chỉnh sửa code và muốn đưa vào nhánh chính **master** của *main remote repository*. Thành viên sẽ tạo 1 **pull request** bằng cách click **New pull request**.
 
-<img src="assets/img/F301_2_27.png" width="800"/>
+<img src="assets/img/F301_2_27.png" width="600"/>
 
 Điền thông tin của **pull request**, nhấn **Create pull request**. Đảm bảo **base** là `master` và **compared** là `A` (trộn `A` vào `master`).
 
-<img src="assets/img/F301_2_28.png" width="800"/>
+<img src="assets/img/F301_2_28.png" width="600"/>
 
 Trong các dự án thực sự, ta cần sự kiểm tra của các thành viên khác.
 
-<img src="assets/img/F301_2_29.png" width="800"/>
+<img src="assets/img/F301_2_29.png" width="600"/>
 
 Muốn vậy ta chọn **Reviewers** ở cột bên phải và điền tên/username của thành viên kiểm tra.
 
@@ -412,13 +412,13 @@ Người kiểm tra sẽ **approve** (đồng ý), **decline** (từ chối) *pu
 
 #### 3.3.6 Merge
 
-<img src="assets/img/F301_2_30.png" width="800"/>
+<img src="assets/img/F301_2_30.png" width="300"/>
 
 Một *pull request* được tán thành (*approve*) có thể được nhập/trộn (*merge*) vào nhánh chính `master`. Ví dụ, với nhánh `A`, click vào *pull request* và click vào **Merge pull request** -> **Confirm merge**.
 
 Lúc này, kiểm tra lại nhánh `master`, ta thấy nó cũng bao gồm các *commit* trong `A`, cụ thể là cũng chứa file `A.txt`.
 
-<img src="assets/img/F301_2_31.png" width="800"/>
+<img src="assets/img/F301_2_31.png" width="600"/>
 
 #### 3.3.7 Cập nhật code sau các lần merge: *git fetch*, *git merge*, *git pull*
 
