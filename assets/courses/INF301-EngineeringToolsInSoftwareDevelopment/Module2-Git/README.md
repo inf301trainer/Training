@@ -158,7 +158,7 @@ Omit --global to set the identity only in this repository.
 fatal: unable to auto-detect email address (got 'anybody@anywhere.(none)')
 # Khai báo tài khoản bằng git config --global nếu bạn muốn khai báo cho tất cả working directory, git config --local nếu bạn muốn khai báo cho chỉ 1 working directory.
 anybody@anywhere:~/workspace/inf301 master 128 ± git config --local user.name inf301trainer
-anybody@anywhere:~/workspace/inf301 master ± git config --local user.email greenappl91@gmail.com
+anybody@anywhere:~/workspace/inf301 master ± git config --local user.email master@gmail.com
 # Thực hiện git commit
 anybody@anywhere:~/workspace/inf301 master ± git commit -m "Add 'hello_world' script"
 [master (root-commit) 14541b9] Add 'hello_world' script
@@ -303,7 +303,92 @@ anybody@anywhere:~/workspace/A/inf301 A ± git branch
   master
 ```
 
-#### 3.3.4 *git push*
+#### 3.3.4 *git commit*, *git push*
+
+Tương tự phần 3.2.4, 3.2.5, ta cập nhật một số thay đổi trong 2 nhánh:
+
+Cho nhánh `A`:
+
+``` sh
+# Đây là trạng thái cũ (1 file)
+anybody@anywhere:~ $ cd workspace/A/inf301/
+anybody@anywhere:~/workspace/A/inf301 A ± ls
+hello_world.py
+
+# Thêm 1 file
+anybody@anywhere:~/workspace/A/inf301 A ± echo "This is file A." > A.txt
+anybody@anywhere:~/workspace/A/inf301 A* ± ls
+A.txt  hello_world.py
+
+# git add
+anybody@anywhere:~/workspace/A/inf301 A* ± git add -A
+
+# git config (cho lần đầu tiên)
+anybody@anywhere:~/workspace/A/inf301 A(+0/-0) 128 ± git config --local user.name inf301trainer
+anybody@anywhere:~/workspace/A/inf301 A(+0/-0) ± git config --local user.email a@gmail.com
+
+# git commit
+anybody@anywhere:~/workspace/A/inf301 A(+0/-0) ± git commit -m "Add file A"
+[A 5352166] Add file A
+ 1 file changed, 1 insertion(+)
+ create mode 100644 A.txt
+
+# git push
+anybody@anywhere:~/workspace/A/inf301 A(1) ± git push origin A
+Username for 'https://github.com': inf301trainer
+Password for 'https://inf301trainer@github.com':
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 292 bytes | 292.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/inf301trainer/inf301.git
+   483530b..5352166  A -> A
+```
+
+Cho nhánh **B**
+
+``` sh
+anybody@anywhere:~ $ cd workspace/B/inf301/
+
+# git checkout
+anybody@anywhere:~/workspace/B/inf301 master* ± git checkout B
+Branch 'B' set up to track remote branch 'B' from 'origin'.
+Switched to a new branch 'B'
+
+# Update files in working directory
+anybody@anywhere:~/workspace/B/inf301 B* ± echo "This is file B." > B.txt
+anybody@anywhere:~/workspace/B/inf301 B* ± ls
+B.txt  hello_world.py
+
+# git config
+anybody@anywhere:~/workspace/B/inf301 B* ± git config --local user.name inf301trainer
+anybody@anywhere:~/workspace/B/inf301 B* ± git config --local user.email b@gmail.com
+
+# git add
+anybody@anywhere:~/workspace/B/inf301 B* 1 ± git add -A
+anybody@anywhere:~/workspace/B/inf301 B(+0/-0) ± git commit -m "Add file B"
+[B 03f5eaa] Add file B
+ 1 file changed, 1 insertion(+)
+ create mode 100644 B.txt
+
+# git push
+anybody@anywhere:~/workspace/B/inf301 B(1) ± git push origin B
+Username for 'https://github.com': inf301trainer
+Password for 'https://inf301trainer@github.com':
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 286 bytes | 143.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/inf301trainer/inf301.git
+   483530b..03f5eaa  B -> B
+```
+
+Bây giờ, khi kiểm tra lại trên *remote repository*, ta thấy 2 nhánh `A`, `B` có các trạng thái khác nhau (một chứa `A.txt`, một chứa `B.txt`)
+
+<img src="assets/img/F301_2_25.png" width="800"/>
+<img src="assets/img/F301_2_26.png" width="800"/>
 
 #### 3.3.5 Tạo *pull request*
 
